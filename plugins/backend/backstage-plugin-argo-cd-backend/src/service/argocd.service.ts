@@ -74,7 +74,7 @@ export class ArgoService implements ArgoServiceApi {
           name: argoInstance.name as string,
           url: argoInstance.url as string,
           appName: options.selector
-            ? getArgoAppDataResp.items.map((x: any) => x.metadata.name)
+	    ? (getArgoAppDataResp.items ?? []).map((x: any) => x.metadata.name)
             : [options.name],
         };
       }),

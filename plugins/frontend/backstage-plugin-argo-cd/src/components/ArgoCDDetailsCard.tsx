@@ -80,7 +80,7 @@ const OverviewComponent = ({
   const configApi = useApi(configApiRef);
   const baseUrl = configApi.getOptionalString('argocd.baseUrl');
   const supportsMultipleArgoInstances: boolean = Boolean(
-    configApi.getOptionalConfigArray('argocd.appLocatorMethods')?.length,
+    (configApi.getOptionalConfigArray('argocd.appLocatorMethods')?.length ?? []) > 1,
   );
 
   const columns: TableColumn[] = [
